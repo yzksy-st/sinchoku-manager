@@ -2,18 +2,6 @@
 
 # 送信したいチャンネルの情報のリスト
 targets:
-  - name: "soft_reminder_job"
-    webhook_url_env: "SOFT_REMINDER_WEBHOOK_URL"
-    schedule_time: "16:20" # JST
-    message: "<@&1362630766692929566> 進捗どうですか？"
-    weekday_only: true
-
-  - name: "hard_reminder_job"
-    webhook_url_env: "HARD_REMINDER_WEBHOOK_URL"
-    schedule_time: "16:20" # JST
-    message: "<@&1362630841636753530> 進捗どうですか？"
-    weekday_only: true
-
   - name: "diary_reminder_job"
     webhook_url_env: "DIARY_REMINDER_WEBHOOK_URL"
     schedule_time: "21:00" # JST

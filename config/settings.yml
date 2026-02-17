@@ -2,12 +2,20 @@
 
 # 送信したいチャンネルの情報のリスト
 targets:
-  - name: "soft_reminder_job" # 1つ目のジョブの名前（重複しないように）
+  - name: "soft_reminder_job"
     webhook_url: "https://discord.com/api/webhooks/1402134851796078694/sXYD94uOx7OuyvTY7ED___6qwbGU5ii3Qi73D5-4svVPEjvT_ru_bzgc_zF0vOHAlZOF"
     schedule_time: "16:20" # JST
     message: "<@&1362630766692929566> 進捗どうですか？"
+    weekday_only: true
 
-  - name: "hard_reminder_job" # 2つ目のジョブの名前
+  - name: "hard_reminder_job"
     webhook_url: "https://discord.com/api/webhooks/1402459100842819584/QVBBWkf0CArCbmJrLkMZ3Yr48FI3_aGbhLumls37UXGhvK_Thrt5yNmnMEEOA9x1UNOa"
     schedule_time: "16:20" # JST
     message: "<@&1362630841636753530> 進捗どうですか？"
+    weekday_only: true
+
+  - name: "diary_reminder_job"
+    webhook_url: "https://discord.com/api/webhooks/1473309365908803674/VxhMm4-lXPQkL5EciMm3RGSp2ITdJHvI6GNsd0gTYPrYZ1lp0LMbPZOzawBdE1IDVaZw"
+    schedule_time: "21:00" # JST
+    message: "日記を書こうね"
+    weekday_only: false

@@ -13,16 +13,32 @@ describe SinchokuManager do
   describe '.should_run?' do
     after { Timecop.return }
 
-    it '平日（金曜日）の場合、trueを返すこと' do
-      friday = Time.parse("2025-08-08")
-      Timecop.freeze(friday)
-      expect(SinchokuManager.should_run?(Time.now)).to be true
+    context 'weekday_only: true の場合' do
+      it '平日（金曜日）の場合、trueを返すこと' do
+        friday = Time.parse("2025-08-08")
+        Timecop.freeze(friday)
+        expect(SinchokuManager.should_run?(Time.now, weekday_only: true)).to be true
+      end
+
+      it '休日（土曜日）の場合、falseを返すこと' do
+        saturday = Time.parse("2025-08-09")
+        Timecop.freeze(saturday)
+        expect(SinchokuManager.should_run?(Time.now, weekday_only: true)).to be false
+      end
     end
 
-    it '休日（土曜日）の場合、falseを返すこと' do
-      saturday = Time.parse("2025-08-09")
-      Timecop.freeze(saturday)
-      expect(SinchokuManager.should_run?(Time.now)).to be false
+    context 'weekday_only: false の場合' do
+      it '平日（金曜日）の場合、trueを返すこと' do
+        friday = Time.parse("2025-08-08")
+        Timecop.freeze(friday)
+        expect(SinchokuManager.should_run?(Time.now, weekday_only: false)).to be true
+      end
+
+      it '休日（土曜日）の場合でも、trueを返すこと' do
+        saturday = Time.parse("2025-08-09")
+        Timecop.freeze(saturday)
+        expect(SinchokuManager.should_run?(Time.now, weekday_only: false)).to be true
+      end
     end
   end
 

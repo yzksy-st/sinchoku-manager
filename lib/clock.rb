@@ -10,8 +10,11 @@ module Clockwork
   config = YAML.load_file('./config/settings.yml')
 
   config['targets'].each do |target|
-    # ↓ この行に if: オプションを追加します
-    every(1.day, target['name'], at: target['schedule_time'], if: ->(t){ (1..5).include?(t.wday) }) do
+    weekday_only = target.fetch('weekday_only', true)
+    options = { at: target['schedule_time'] }
+    options[:if] = ->(t) { (1..5).include?(t.wday) } if weekday_only
+
+    every(1.day, target['name'], **options) do
       puts "Running job for #{target['name']}..."
       DiscordNotifier.send(target['webhook_url'], target['message'])
     end

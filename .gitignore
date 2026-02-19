@@ -1,13 +1,8 @@
-# .env - 機密情報用（Gitにコミットしない）
+# 機密情報
 .env
 
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-error.log*
-
-# TypeScript build output
-diary-bot/dist/
+# Ruby
+vendor/bundle/
 
 # IDE
 .vscode/

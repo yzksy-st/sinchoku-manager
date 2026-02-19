@@ -1,6 +1,9 @@
 # 機密情報
 .env
 
+# Claude Code
+CLAUDE.md
+
 # Ruby
 vendor/bundle/
 
